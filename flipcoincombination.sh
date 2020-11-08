@@ -7,23 +7,24 @@ coin[tailtail]=0;
 coin[headtail]=0;
 count=0;
 
-addtoDictionary(){
-if [ $1 -eq 0 ]
-then
-coin[headhead]=`expr ${coin[headhead]} + 1`;
-elif [ $1 -eq 1 ]
-then
-coin[tailtail]=`expr ${coin[tailtail]} + 1`;
-else
-coin[headtail]=`expr ${coin[headtail]} + 1`;
-fi
+addtoDictionary()
+{
+  if [ $1 -eq 0 ]
+  then
+      coin[headhead]=`expr ${coin[headhead]} + 1`;
+  elif [ $1 -eq 1 ]
+  then
+      coin[tailtail]=`expr ${coin[tailtail]} + 1`;
+  else
+     coin[headtail]=`expr ${coin[headtail]} + 1`;
+  fi
 }
 
 while [ $count -le 25 ]
 do
-flip=$((RANDOM%3));
-addtoDictionary $flip;
-((++count))
+  flip=$((RANDOM%3)); 
+  addtoDictionary $flip;
+  ((++count))
 done
 
 perheadhead=`expr ${coin[headhead]} \* 100`;
