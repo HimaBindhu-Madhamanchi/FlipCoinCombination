@@ -6,20 +6,21 @@ coin[heads]=0;
 coin[tails]=0;
 count=0;
 
-addtoDictionary(){
-if [ $1 -eq 0 ]
-then
-coin[heads]=`expr ${coin[heads]} + 1`;
-else
-coin[tails]=`expr ${coin[tails]} + 1`;
-fi
+addtoDictionary()
+{
+  if [ $1 -eq 0 ]
+  then
+      coin[heads]=`expr ${coin[heads]} + 1`;
+  else
+      coin[tails]=`expr ${coin[tails]} + 1`;
+   fi
 }
 
 while [ $count -le 25 ]
 do
-flip=$((RANDOM%2));
-addtoDictionary $flip;
-((++count))
+  flip=$((RANDOM%2));
+  addtoDictionary $flip;
+  ((++count))
 done
 
 perhead=`expr ${coin[heads]} \* 100`;
@@ -35,23 +36,24 @@ coin[tailtail]=0;
 coin[headtail]=0;
 count=0;
 
-addtoDictionary(){
-if [ $1 -eq 0 ]
-then
-coin[headhead]=`expr ${coin[headhead]} + 1`;
-elif [ $1 -eq 1 ]
-then
-coin[tailtail]=`expr ${coin[tailtail]} + 1`;
-else
-coin[headtail]=`expr ${coin[headtail]} + 1`;
-fi
+addtoDictionary()
+{
+ if [ $1 -eq 0 ]
+ then
+   coin[headhead]=`expr ${coin[headhead]} + 1`;
+ elif [ $1 -eq 1 ]
+ then
+   coin[tailtail]=`expr ${coin[tailtail]} + 1`;
+ else
+   coin[headtail]=`expr ${coin[headtail]} + 1`;
+ fi
 }
 
 while [ $count -le 25 ]
 do
-flip=$((RANDOM%3));
-addtoDictionary $flip;
-((++count))
+  flip=$((RANDOM%3));
+  addtoDictionary $flip;
+  ((++count))
 done
 
 perheadhead=`expr ${coin[headhead]} \* 100`;
@@ -71,26 +73,27 @@ coin[headheadtail]=0;
 coin[headtailtail]=0;
 count=0;
 
-addtoDictionary(){
-if [ $1 -eq 0 ]
-then
-coin[headheadhead]=`expr ${coin[headheadhead]} + 1`;
-elif [ $1 -eq 1 ]
-then
-coin[tailtailtail]=`expr ${coin[tailtailtail]} + 1`;
-elif [ $1 -eq 2 ]
-then
-coin[headheadtail]=`expr ${coin[headheadtail]} + 1`;
-else
-coin[headtailtail]=`expr ${coin[headtailtail]} + 1`;
-fi
+addtoDictionary()
+{
+  if [ $1 -eq 0 ]
+  then
+    coin[headheadhead]=`expr ${coin[headheadhead]} + 1`;
+  elif [ $1 -eq 1 ]
+  then
+    coin[tailtailtail]=`expr ${coin[tailtailtail]} + 1`;
+  elif [ $1 -eq 2 ]
+  then
+     coin[headheadtail]=`expr ${coin[headheadtail]} + 1`;
+  else
+     coin[headtailtail]=`expr ${coin[headtailtail]} + 1`;
+  fi
 }
 
 while [ $count -le 25 ]
 do
-flip=$((RANDOM%4));
-addtoDictionary $flip;
-((++count))
+  flip=$((RANDOM%4));
+  addtoDictionary $flip;
+  ((++count))
 done
 
 perheadheadhead=`expr ${coin[headheadhead]} \* 100`;
@@ -120,8 +123,8 @@ echo "dictionary :" ${coinsort[@]}
 variable=${coinsort[@]}
 for value in $variable
 do 
-	array+=($value)
+  array+=($value)
 done
-	echo "array value are:" ${array[@]}
+echo "array value are:" ${array[@]}
 sorting=`echo ${array[@]} | awk 'BEGIN{RS=" "} {print $1}' | sort -n `
 echo $sorting
